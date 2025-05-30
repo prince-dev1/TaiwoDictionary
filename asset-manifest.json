@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/TaiwoDictionary/static/css/main.d40b6be2.css",
+    "main.js": "/TaiwoDictionary/static/js/main.bc161daa.js",
+    "index.html": "/TaiwoDictionary/index.html",
+    "main.d40b6be2.css.map": "/TaiwoDictionary/static/css/main.d40b6be2.css.map",
+    "main.bc161daa.js.map": "/TaiwoDictionary/static/js/main.bc161daa.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d40b6be2.css",
+    "static/js/main.bc161daa.js"
+  ]
+}
