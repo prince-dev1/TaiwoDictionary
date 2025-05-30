@@ -2,17 +2,15 @@ import './App.css';
 import { useState } from "react";
 import axios from "axios";
 import ListDetails from "./components/ListDetails";
-// import image from "./src/image";
 
 function App() {
-  const [keyword, setKeyword] = useState("");  
+  const [keyword, setKeyword] = useState("");
   const [result, setResult] = useState(null);
   const api = "https://api.dictionaryapi.dev/api/v2/entries/en";
 
   async function handleSearch() {
     try {
-      const res = await axios.get(`${api}/${keyword}`);  
-      console.log(res, "res");
+      const res = await axios.get(`${api}/${keyword}`);
       setResult(res.data[0]);
     } catch (e) {
       console.log({ e });
@@ -20,52 +18,61 @@ function App() {
   }
 
   function handleClear() {
-    setKeyword("");  
+    setKeyword("");
     setResult(null);
   }
 
-  return (
-    <div className="Overpage">
-      <div  className="App">
-      <header className= "Header" >
-        <h2 className= "Headerc"> Spectacular Dictionary</h2>
+ return (
+  <div>
+    {/* HERO SECTION WITH IMAGE */}
+    <div
+      className="hero-section text-white d-flex align-items-center justify-content-center text-center"
+      style={{
+        backgroundImage: `linear-gradient(rgba(144,238,144,0.5), rgba(144,238,144,0.5)), url('image1.jpg')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        height: '60vh',
+        width: '100%',
+        padding: '1rem',
+      }}
+    >
+      <header>
+        <h2 className="display-4 fw-bold">Taiwo Dictionary</h2>
       </header>
+    </div>
 
-      <main>
-        <section>
-          <label htmlFor="search">Enter a word:</label>
-          <input 
-            id="search"
-            type="text"
-            value={keyword} 
-            onChange={(e) => setKeyword(e.target.value)} 
-            aria-label="Word Search" 
-          />
-        </section>
-
-        <section>
-          <button className="button" type="button" onClick={handleSearch}>
-            Search
-          </button>
-          <button
-            disabled={!result}
-            className="button"
-            type="button"
-            onClick={handleClear}
-          >
-            Reset
-          </button>
-        </section>
-      </main>
-
-      {result && <ListDetails result={result} />}
+    {/* MAIN APP SECTION */}
+    <div className="container-fluid">
+      <div className="mb-3">
+        <label htmlFor="search" className="form-label">Enter a word:</label>
+        <input
+          id="search"
+          type="text"
+          className="form-control"
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
+        />
       </div>
 
-      <footer className= "footer">
-        <p> We wish you all the best</p>
-      </footer>
-     
+      <div className="mb-3">
+        <button className="btn btn-success me-2" onClick={handleSearch}>Search</button>
+        <button
+          className="btn btn-outline-secondary"
+          disabled={!result}
+          onClick={handleClear}
+        >
+          Reset
+        </button>
+        </div>
+      {result && <ListDetails result={result} />}
+      </div>
+      
+
+    {/* FOOTER */}
+    <footer className="text-center py-3 bg-success text-white">
+      <p>Learn to know better</p>
+    </footer>
     </div>
-  );
+);
 }
 export default App;
