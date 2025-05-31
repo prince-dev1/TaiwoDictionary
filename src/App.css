@@ -181,3 +181,28 @@ button {
 body, html {
   overflow-x: hidden;
 }
+
+.main-section {
+  padding: 2rem 1rem;
+}
+
+.form-label {
+  margin-bottom: 0.5rem;
+}
+
+.form-control {
+  margin-bottom: 1rem;
+}
+
+.btn {
+  margin-right: 0.5rem;
+}
+
+.result-section {
+  margin-top: 2rem;
+}
+
+footer {
+  margin-top: 2rem;
+  padding: 1.5rem 1rem;
+}
