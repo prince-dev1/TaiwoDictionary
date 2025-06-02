@@ -7,20 +7,25 @@ function App() {
   const [keyword, setKeyword] = useState("");
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const api = "https://api.dictionaryapi.dev/api/v2/entries/en";
 
   async function handleSearch() {
-  setLoading(true); // Show loading
+  setError("");        // Clear previous errors
+  setResult(null);     // Clear previous results
+  setLoading(true);    // Show loader if you’re using one
+
   try {
     const res = await axios.get(`${api}/${keyword}`);
     setResult(res.data[0]);
   } catch (e) {
-    console.error({ e });
+    setError("This word does not exist or couldn't be found.");
   } finally {
-    setLoading(false); // Hide loading
+    setLoading(false);
   }
 }
+
 
 
   function handleClear() {
@@ -81,6 +86,12 @@ function App() {
           Reset
         </button>
         </div>
+        {error && (
+      <div className="alert alert-danger" role="alert">
+    {error}
+  </div>
+)}
+
       {result && <ListDetails result={result} />}
       </div>
       
